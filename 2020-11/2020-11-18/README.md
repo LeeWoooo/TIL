@@ -9,7 +9,7 @@ Today I Learned (TIL)
 
 1. SIST 수업 수강
 
-    * JFC에대한 수업 진행 (AWT,SWING)
+    * JFC에대한 수업 진행 (AWT,SWING에 대한 기본개념)
 
 2. [Jangilkyu](https://github.com/Jangilkyu)와 같이 git을 이용하여 협업을 어떻게 해야할까 고민
     * 같은 원격저장소를 사용하는 것 까지는 성공!
