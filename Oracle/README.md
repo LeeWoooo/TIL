@@ -17,6 +17,15 @@ Oracle
 * 스키마는 총 3계층으로 외부스키마, 개념스키마, 내부스키마로 구성되어 있다.
 
 ---
+## SQL
+
+* Structured Query Language
+
+* SQL이란 DATABASE가 이해할 수 있는 질의 언어(내가 원하는 DATA를 SQL을 이용하여 DATABASE에 요청)
+
+* 관계형 DATABASE들은 SQL을 사용한다.
+---
+
 ## Oracle 사용자 생성 및 스키마 생성
 
 * Oracle은 여러 사용자가 접속하여 사용하며, 사용자를 만들면 사용자에 속한 스키마가 생성된다.
@@ -49,7 +58,7 @@ Oracle
 
 ---
 
-## 표 만들기
+## CREATE(Table 만들기)
 
 * CREATE TABLE 명령어를 이용하여 생성한다.
 
@@ -70,6 +79,7 @@ Oracle
 
 
     * 예제
+
         ```
         CREATE TABLE topic(
 	    id NUMBER NOT NULL,
@@ -80,3 +90,66 @@ Oracle
         ```
 
         <img src = https://user-images.githubusercontent.com/74294325/101643286-51a1a780-3a77-11eb-9cea-63a65c995ca0.JPG>
+
+---
+
+## 내가 생성한 Table 검색하기
+
+* SELECT FROM WHERE 명령어를 사용한다.
+
+    * 검색
+        ```
+        SELECT table_name FROM all_tables WHERE OWNER = '사용자명'
+        ```
+
+    * all_tables이라는 table에서 OWNER의 값이 사용자 명과 같은 
+        table_name이라는 column의 값을 검색하며
+
+        <img src = https://user-images.githubusercontent.com/74294325/101790428-c6431780-3b45-11eb-9ca6-b7f0383083ee.JPG>
+
+---
+
+## CREATE (INSERT INTO)
+
+* 만든 Table에 값을 입력한다.
+
+* INSERT INTO의 사용
+
+    * 문법
+
+        ```
+        INSERT INTO TABLE명(column1명,column2명,,,)
+        VALUES(column1에 넣을값,column1에 넣을값,,,);
+        ```
+
+    * 예제
+
+        <img src = https://user-images.githubusercontent.com/74294325/101792366-fa1f3c80-3b47-11eb-84cf-0e617622129c.JPG>
+
+---
+
+## READ(SELECT)
+
+* SELECT FROM WHERE로 DATABASE에게 내가 원하는 DATA를 요청한다.
+
+* SELECT의 사용
+
+    * 문법
+        ```
+        SELECT column명
+        FROM TABLE명
+        WHERE 조건
+        ORDER BY 기준이 되는 컬럼명;
+        ```
+
+    * WHERE과 ORDER BY는 상황에 따라 생략이 가능하다.
+
+    * 조건에는 대부분 비교 연산자가 온다.
+
+    * ORDER BY의 조건 (오름차순 ASC, 내림차순 DESC)
+    
+    * 예제
+
+        <img src = https://user-images.githubusercontent.com/74294325/101791776-4322c100-3b47-11eb-9c49-8e4ce4ba4ccb.JPG>
+
+---

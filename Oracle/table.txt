@@ -1,0 +1,70 @@
+-테이블 만들기(CREATE)
+
+CREATE TABLE topic(
+	id NUMBER NOT NULL,
+	title VARCHAR2(50) NOT NULL,
+	description VARCHAR2(4000),
+	created DATE NOT NULL
+);
+
+내가 만든 테이블 검색
+
+SELECT table_name FROM all_tables WHERE OWNER = 'LEEWOOGIL';
+
+테이블에 값넣기
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(1,'ORACLE','ORACLE is ...',SYSDATE);
+
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(2,'MYSQL','MYSQL is ...',SYSDATE);
+
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(3,'SQL SERVER','SQLSERVER is ...',SYSDATE);
+
+SQL이란?
+
+SQL을 이용해서 DATABASE을 제어할 수 있다.
+
+STRUCTURED QUERY LANGUAGE (구조화된 정보를 다루는 언어)
+
+관계형 DATABASE는 SQL을 사용합니다.
+
+=============================================================
+
+- SELECT를 이용하여 행을 읽기. (READ)
+기본형식 topic table에서 모든 속성 가져오기
+SELECT *
+FROM topic
+
+내가 원하는 정보 가져오기
+
+SELECT id,created
+FROM topic;
+
+SELECT *
+FROM topic
+WHERE id=1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
