@@ -1,12 +1,17 @@
 Oracle
 ===
 
-* 관계형 DataBase 입니다.
+SIST에서 Oracle 수업을 나가기 전 먼저 예습한 내용들 입니다.(2020.12.10~2020.12.12)<br>
+간단하게 DB의 내용을 이해하고 Oracle의 사용법을 익히기 위함입니다. 예습에 활용한 강의는 [생활코딩](https://opentutorials.org/course/3885)입니다.<br>
+더 자세한 개념들은 SIST강의를 들으며 기록할 예정입니다. <br>
 
----
+
+
 ## ORACLE
 
 * 하나의 ORACLE SERVER에 여러 CLIENT가 접속하여 DATABASE를 조작 하며 작업을 진행한다.
+
+---
 
 ## 스키마
 
