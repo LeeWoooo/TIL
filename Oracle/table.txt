@@ -55,16 +55,74 @@ FROM topic
 WHERE id=1;
 
 
+SELECT * FROM topic ORDER BY id DESC;
+
+SELECT * FROM topic 
+	OFFSET 0 ROWS
+	FETCH NEXT 1 ROWS ONLY;
+
+
+
+UPDATE topic
+	SET 
+		title = 'MSSQL',
+		description = 'MSSQL is ...'
+	WHERE
+		id=3;
+
+
+DELETE FROM topic
+	WHERE id = 3;
 
 
 
 
+DROP TABLE topic;
+
+
+PRIMARY KEY 기본키
+테이블을 생성할 때 정의해주는게 바람직하다.
+column의 값은 유일해야 한다.
+PRIMARY KEY가 중복되면 무결성 제약조건에 위배된다.
+
+CREATE TABLE topic(
+	id NUMBER NOT NULL,
+	title VARCHAR2(50) NOT NULL,
+	description VARCHAR2(4000),
+	created DATE NOT NULL,
+	CONSTRAINT PK_TOPIC PRIMARY KEY(id)
+);
+
+CREATE SEQUENCE SEQ_TOPIC;
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(SEQ_TOPIC.NEXTVAL,'ORACLE','ORACLE is ...',SYSDATE);
+
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(SEQ_TOPIC.NEXTVAL,'MYSQL','MYSQL is ...',SYSDATE);
+
+
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(SEQ_TOPIC.NEXTVAL,'SQL SERVER','SQLSERVER is ...',SYSDATE);
 
 
 
 
+INSERT INTO topic
+	(id,title,description,created)
+	VALUES
+	(SEQ_TOPIC.NEXTVAL,'MongoDB','MongoDB is ...',SYSDATE);
 
 
+SELECT SEQ_TOPIC.CURRVAL FROM topic;
 
+SELECT SEQ_TOPIC.CURRVAL FROM DUAL;
 
-
+C:\Program Files\Java\jdk1.8.0_271\bin;D:\oracle\dbhomeXE\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd
