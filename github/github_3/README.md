@@ -110,9 +110,128 @@ GitHub
 ## branch 병합하기(merge)
 
 
+    각각 만들어진 branch에서 작업을 하다가 어느 시점에서 브랜치 작업을 마무리하고 기존 브랜치에 합해야 하는 상황이온다.
+    이러한 상황에서 branch를 병합한다. 
+
+---
+
+* 서로 다른 파일 병합하기.
+
+    * manual-2라는 directory를 만들고 wrok2.txt를 생성하여 master branch에서 1을 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102705766-6deee100-42ce-11eb-8a71-8f031aa2b1d6.JPG>
+
+    * o2 branch를 만들고 현재 master branch에서 master.txt 를 만들고 master 2를 입력 후 커밋
+
+        <img src =https://user-images.githubusercontent.com/74294325/102705802-c45c1f80-42ce-11eb-9608-294a14d3de8c.JPG>
+
+        * master work2는 o2 branch에서는 적용되지 않는다.
+
+    * o2 branch로 이동하고 o2.txt를 만들어 o2 2를 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102705832-1ef57b80-42cf-11eb-93db-55f37adfdcae.JPG>
+
+    * 현재 branch상황 조회
+
+        <img src = https://user-images.githubusercontent.com/74294325/102705855-4f3d1a00-42cf-11eb-82ac-2bd72092c311.JPG>
+
+        * 부모커밋은 work1에서 master branch와 o2 branch가 나누어져 각각 파일이 생성되고 수정되었다.
+
+    * master branch에 o2 branch 병합하기
+
+        * master branch로 이동 후 o2 branch를 병합
+        * merge 명령어를 사용하면 자동으로 vim이 실행되며 커밋메세지가 나온다.
+
+        <img src = https://user-images.githubusercontent.com/74294325/102705926-35e89d80-42d0-11eb-8c5a-2af34ef9829e.JPG>
+
+        * o2.txt가 master branch에 추가 되었으며 merge할 때 커밋메세지도 등록되어있다.
+
+---
+
+* 같은 문서의 다른 위치를 수정했을 때 병합하기
+
+    * manual-3 라는 directory를 만들고 wrok3.txt를 생성하여 master branch에서 내용을 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706030-a6dc8500-42d1-11eb-8283-bee453ea4915.JPG>
 
 
+        <img src =https://user-images.githubusercontent.com/74294325/102706058-de4b3180-42d1-11eb-9a49-beacb156feba.JPG>
 
 
+        * 내용 사이의 공백은 수정 후 병합하기 위해 넣었습니다.
+    
+    * o2 branch를 만들고 master branch에서 공백에 master content2를 입력하여 커밋합니다.
+
+        <img src =https://user-images.githubusercontent.com/74294325/102706080-2cf8cb80-42d2-11eb-8299-91dec32f14bf.JPG >
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706102-70ebd080-42d2-11eb-8f1e-7ac9c362b4a9.JPG>
+
+        * master branch에서 작업한 것은 o2 branch에서 적용되지 않는다.
+
+    * o2 branch로 이동하여 o2 content 2 를 입력 후 커밋
 
 
+        <img src = https://user-images.githubusercontent.com/74294325/102706151-c6c07880-42d2-11eb-880c-aa826030c1c2.JPG>
+
+        <br>
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706184-f5d6ea00-42d2-11eb-8596-752d8c784354.JPG>
+
+    * master로 이동 후 o2 merge하기
+
+        <img src =https://user-images.githubusercontent.com/74294325/102706220-46e6de00-42d3-11eb-8f32-1b76b64f672c.JPG>
+
+        * 각 branch에서 작업한 내용들이 work.txt에 잘 합쳐짐을 볼수 있다.
+
+---
+
+* 같은 문서의 같은 위치를 수정했을 때 병합하기.
+
+    * manual-4 라는 directory를 만들고 wrok4.txt를 생성하여 master branch에서 내용을 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706336-531f6b00-42d4-11eb-9872-1c56b74a4804.JPG>
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706355-7b0ece80-42d4-11eb-8106-2743c4a1758d.JPG>
+
+        * 공백의 위치에서 각 branch별 다른 작업을 할 것이다.
+
+    * o2 branch를 만들고 master branch에서 공백에 master content2를 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706388-d6d95780-42d4-11eb-8dff-2ea8fa868dfe.JPG>
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706392-e48edd00-42d4-11eb-9afd-bc849c865ac0.JPG>
+
+    * o2로 이동하여 공백에 o2 content2를 입력 후 커밋
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706436-3b94b200-42d5-11eb-8aa2-e475d2d74b40.JPG>
+
+    * master로 이동 후 o2를 merge
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706457-61ba5200-42d5-11eb-92ce-a56d69d92e83.JPG>
+
+        * 같은 위치에 각각의 branch가 다른 작업을 하였기에 충돌이 난 것을 볼 수 있다.
+
+        * conflict: 충돌발생
+
+    * vim으로 work.txt확인하기
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706478-9dedb280-42d5-11eb-87aa-1f96f8f345ed.JPG>
+
+        * vim내용
+
+            * "<<<<HEAD"는 이후 내용은 현재 branch를 의미
+            * ==========은 가로줄을 기준으로 위는 현재 branch내용 아래는 병합할 branch 작업내용
+            * ">>>>"는 병합할 branch를 의미한다.
+
+    * ">>>" , "<<<" , =====  지우고 스테이지에 올려서 커밋하기
+
+        <img src =https://user-images.githubusercontent.com/74294325/102706718-a810b080-42d7-11eb-9367-33436eb3abf8.JPG>
+
+---
+* merge가 완료된 branch를 삭제하기
+
+    * 위에서 merge가 끝나 o2 branch를 삭제합니다.
+
+        <img src = https://user-images.githubusercontent.com/74294325/102706763-0342a300-42d8-11eb-8b8e-9b11524429af.JPG>
+
+        * `삭제할 branch에서 branch삭제 작업을 하는 것이 아닌 기본 branch에서 작업`
