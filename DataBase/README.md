@@ -1,7 +1,7 @@
 DataBase
 ===
 
-* DataBase의 개념을 학습 후 Oracle 학습예정
+* DataBase의 개념 및 추가 내용을 정리합니다.
 ---
 
 ## DataBase의 기본적인 개념
