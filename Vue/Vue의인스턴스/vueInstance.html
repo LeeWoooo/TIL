@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue인스턴스 예제코드</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'hello'
+            },
+            beforeCreate: function(){
+                console.log('beforeCreate');
+            },
+            created:function(){
+                console.log('created');
+            },
+            mounted:function(){
+                console.log('mounted');
+                this.message = '이우길퇴근해라'
+                //붙은 이후 데이터 변동이 있기 때문에 update가 일어나고 update가 끝나면 updated가 실행되는 것이다.
+            },
+            updated:function(){
+                console.log('updated');
+            }
+        });
+    </script>
+</body>
+</html>
