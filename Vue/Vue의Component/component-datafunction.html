@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴포넌트 데이터 테스트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component></child-component>
+        <child-component></child-component>
+        <child-component></child-component>
+    </div>
+
+    <script>
+
+        let data = {counter : 0}
+
+        Vue.component(
+            'child-component',{
+                template:'<button v-on:click="counter += 1">{{counter}}</button>',
+                data:function(){
+                    return {counter : 0}
+                    //return data
+                }
+            }
+        );
+
+        new Vue({
+            el:'#app'
+        })
+
+    </script>
+</body>
+</html>

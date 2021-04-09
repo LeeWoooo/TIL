@@ -5,6 +5,8 @@ Component란 조합하여 화면을 구성할 수 있는 블록(화면의 특정
 
 Vue에서는 웹 화면을 구성할 때 흔히 사용되는 영역들을 컴포넌트 단위로 관리를 한다.
 
+Vue Component는 Vue의 인스턴스이기도 하기 때문에 모든 Option을 사용할 수 있다.(root에서만 사용 가능한 Option은 사용할 수 없다.) 또한 같은 라이프사이클 훅을 사용할 수 있다.
+
 * 사진
 
     <img src = https://kr.vuejs.org/images/components.png>
@@ -19,6 +21,38 @@ Vue에서는 웹 화면을 구성할 때 흔히 사용되는 영역들을 컴포
 
 컴포넌트를 등록하는 방법은 전역과 지역 두가지의 방법이 있다. Local Component는 특정 인스턴스에서 유효한 범위를 가지고 있고 Global Component는 여러 인스턴스에서 공통으로 사용할 수 있다.
 
+여기서 Component에서 Option으로 사용하는 data는 **반드시 함수여야한다.** 함수의 return값을 template option에서 바로 가져다가 사용을 할 수 있게된다. 현재 여기서 두가지 경우가 있는데 하나는 전역변수로 선언한 객체를 data의 return값으로 넣을 때와 data의 return값으로 객체를 직접 정의해서 할 때를 확인해보자
+
+* 1번의 경우
+
+    ```javascript
+        let data = { counter: 0 }
+
+        Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        // 각 컴포넌트 인스턴스에 대해 같은 객체 참조를 반환합니다.
+        data: function () {
+            return data
+        }
+        })
+    ```
+
+data의 return값으로 전역변수 객체를 해주게 되는데 이 Component를 사용하는 영역에서는 모두 전역변수인 data를 참조한다.
+
+* 2번의 경우
+
+    ```javascript
+    ...
+    data: function () {
+        return {
+            counter: 0
+        }
+    }
+    ...
+    ```
+
+data의 return값으로 객체를 정의해 return하게 되면 여러 곳에서 Component가 사용된다 하더라도 각각의 객체로 참조된다.
+
 <br>
 
 ### Global Component로 등록하기
@@ -29,13 +63,13 @@ Global Component는 Vue 라이브러리를 로딩하고 나면 접근 가능한 
 
     ```javascript
     Vue.component('Component이름',{
-
+        //이 영역에 option이 추가된다.
     })
     ```
 
 Global Component 등록 형식에는 Component이름과 Component내용이 있다. Component 이름은 template 속성에서 사용할 HTML 사용자 정의 태그 이름을 의미한다. ```생성순서는 먼저 Vue 생성자로 Component를 등록하고 그 다음 Vue 인스턴스 객체들이 생성이 된다.```
 
->사용자 정의 태그 : HTML 표준태그들 이외에도 웹 개발자가 집접 정의하여 사용할 수 있는 태그
+>사용자 정의 태그 : HTML 표준태그들 이외에도 웹 개발자가 집접 정의하여 사용할 수 있는 태그, Vue의 사용자 지정 태그의 naming은 모두 소문자에 하이픈을 포함하여 작성하는 방법을 지향한다.
 
 Component tag가 실제 화면의 HTML 요소로 변환될 때 표시될 속성들을 Component 내용에 작성을 한다. 여기에 template,data,methods등을 정의할 수 있게 되는 것이다.
 
