@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라우터 실습</title>
+</head>
+<body>
+    <div id="app">
+        <h1>라우터 실습</h1>
+
+        <p>
+            <!-- Vue라우터에서 지원하는 태그 router-link -->
+            <!-- 누르게 되면 Vue라우터를 생성할 때 넣어준 routes의 속성에 따라 component가 결정된다. -->
+            <router-link to="/main">Main 컴포넌트로 이동</router-link>
+            <router-link to="/login">Login 컴포넌트로 이동</router-link>
+        </p>
+
+        <!-- router-link 태그로 페이지 이동시 component가 뿌려질 영역 -->
+        <router-view></router-view>
+    </div>
+    <!-- Vue라우터 CDN방식 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+        //Main 컴포넌트
+        let Main={
+            template:'<div>main</div>'
+        }
+        //Login 컴포넌트
+        let Login={
+            template:'<div>login</div>'
+        }
+
+        //routes변수에 URL값에 따른 어떠한 component가 보여줄지 정의한다.
+        let routes = [
+            {path : '/main', component: Main},
+            {path : '/login',component: Login}
+        ];
+
+        //router변수로 VueRouter를 생성하고 routes를 삽입하여 URL에 따라 화면이 전환될 수 있게 정의
+        let router = new VueRouter({
+            mode:'history',
+            routes
+        })
+
+        //새 인스턴스를 생성하고 라우터의 정보가 담긴 router를 추가한다.
+        //여기서 사용된 $mount API는 el과 동일하게 화면에 Vue인스턴스를 붙이는 역할을 한다.
+        let app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+</body>
+</html>

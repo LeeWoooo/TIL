@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라우터 실습</title>
+</head>
+<body>
+    <div id="app">
+        <h1>라우터 실습</h1>
+        <router-view></router-view>
+    </div>
+    <!-- Vue라우터 CDN방식 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+        const User = {
+            //nested 라우팅은 부모 컴포넌트의 template에서 router-view를 갖는다.
+            template : `<div>
+                            유저 컴포넌트 입니다. 이 안에 자식 컴포넌트가 담길 것입니다.
+                            <router-view></router-view>
+                        </div>`
+        };
+
+        const UserProfile = {
+            template : '<p>UserProfile 컴포넌트 입니다.</p>'
+        };
+        const UserPost = {
+            template : '<p>UserPost 컴포넌트 입니다.</p>'
+        };
+
+        const routes = [
+            {
+                path:'/user',
+                component:User,
+                //이 /user컴포넌트 밑으로 포함될 컴포넌트 및 URL을 children이라는 배열안에서 각각 객체로 생성한다.
+                children:[
+                    {
+                        path:'profile',
+                        component:UserProfile
+                    },
+                    {
+                        path:'post',
+                        component:UserPost
+                    }
+                ]
+            }
+        ]
+
+        const router = new VueRouter({
+            routes
+        });
+
+        let app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+</body>
+</html>

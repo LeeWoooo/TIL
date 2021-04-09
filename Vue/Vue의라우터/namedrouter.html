@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라우터 실습</title>
+</head>
+<body>
+    <div id="app">
+        <h1>라우터 실습</h1>
+        <router-view name="header"></router-view>
+        <router-view name="body"></router-view>
+        <router-view name="footer"></router-view>
+    </div>
+    <!-- Vue라우터 CDN방식 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+
+        const Header = {template : '<div>Header 영역입니다.</div>'};
+        const Body = {template : '<div>Body 영역입니다.</div>'};
+        const Footer = {template : '<div>Footer 영역입니다.</div>'};
+
+        const routes = [
+            {
+                path:'/',
+                components :{
+                    header : Header,
+                    body : Body,
+                    footer : Footer
+                }
+            }
+        ];
+
+        const router = new VueRouter({
+            routes
+        });
+
+        let app = new Vue({
+            router
+        }).$mount('#app')
+
+    </script>
+</body>
+</html>
