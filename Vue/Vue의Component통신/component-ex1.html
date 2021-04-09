@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴포넌트 통신 예제1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component1></my-component1>
+        <my-component2></my-component2>
+    </div>
+
+    <script>
+        const cmp1 = {
+            //data의 function에서 return값은 template에서 바로 가져다가 사용할 수 있다.
+            template : '<div>첫번 째 지역 컴포넌트 : {{cmp1Data}}</div>',
+            data : function(){
+                return {
+                    cmp1Data : 100
+                }
+            }
+        };
+
+        const cmp2 = {
+            //여기서 결과로는 cmp2Data는 아무 값도 출력이 되지 않는다.
+            //그 이유는 컴포넌트 끼리는 직접 참조를 할 수 없기 때문이다.
+            template : '<div>두번 째 지역 컴포넌트 : {{cmp2Data}}<div>',
+            data : function(){
+                return {
+                    cmp2Data : cmp1.data.cmp1Data
+                }
+            }
+        }
+
+        new Vue({
+            el:'#app',
+            components : {
+                'my-component1' : cmp1,
+                'my-component2' : cmp2,
+            }
+        });
+    </script>
+</body>
+</html>

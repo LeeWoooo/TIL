@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴포넌트 통신 예제</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <div id="app">
+        <child-component v-bind:propsdata="anotherMessage"></child-component>
+    </div>
+
+    <script>
+        Vue.component(
+            'child-component',{
+                props:['propsdata'],
+                template:'<div>부모에게 넘어온 데이터 입니다. {{propsdata}}</div>'
+            }   
+        );
+
+        new Vue({
+            el:'#app',
+            data:{
+                message:'Hello Vue',
+                anotherMessage:'부모에게 받은 메세지'
+            }
+        })
+    </script>
+</body>
+</html>
