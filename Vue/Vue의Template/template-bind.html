@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="idA">아이디 바인딩</p>
+        <p v-bind:class="classA">클래스 바인딩</p>
+        <p v-bind:style="styleA">스타일 바인딩</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data: function(){
+                return {
+                    idA:10,
+                    classA:'container',
+                    styleA:'color : blue'       
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 예제</title>
+</head>
+<body>
+    <div id="app">
+        <a v-if="flag">Hello Vue!</a>
+        <ul>
+            <li v-for="system in systems">{{system}}</li>
+        </ul>
+        <p v-show="flag">Hello Show Vue!</p>
+        <h5 v-bind="uid">아이디 바인딩</h5>
+        <button v-on:click="popupAlert">경고창 버튼</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:function(){
+                return {
+                    flag : true,
+                    systems : ['android','ios','window'],
+                    uid:10
+                }
+            },
+            methods :{
+                popupAlert : function(event){
+                    return alert('경고창 표시');
+                    // console.log(event)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
