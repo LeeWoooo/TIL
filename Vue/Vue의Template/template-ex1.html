@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <p v-bind:id="uid" v-if="flag">아이디바인딩</p>
+        <button v-on:click="alertEvent">alert이벤트</button> <br>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data: function(){
+                return {
+                    message : 'Hello Vue',
+                    uid : 20,
+                    flag:true,
+                    arr : ['사과','포도','배','딸기']
+                }
+            },
+            methods:{
+                alertEvent : function(){
+                    alert('alert이벤트');
+                    this.flag = false;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

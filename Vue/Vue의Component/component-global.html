@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component예제</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <button>컴포넌트 등록</button>
+        <my-component></my-component>
+        {{message}}
+    </div>
+    <script>
+
+        // 밑에서 생성하는 new Vue와는 관계가 없이 Vue를 새로 만든것이다.
+        // 이렇게 만들어 전역에서 사용자 정의 태그로 사용을 할 수 있게 되는 것이다.
+        Vue.component('my-component',{
+            template : '<div>전역 컴포넌트가 등록되었습니다!</div>',
+            data : {
+                data1 : 'data1'
+            }
+        });
+
+
+        new Vue({
+            el:'#app',
+            data:{
+                message:'test입니다.'
+            }
+        });
+    </script>
+</body>
+</html>
